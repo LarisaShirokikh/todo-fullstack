@@ -20,7 +20,9 @@ export const TodoList = () => {
                     classNames={'todo'}
                     key={todo.id}
                 >
-                    <TodoItem todo={todo} />
+                    <TodoItem todo={todo}
+                        deleteTodo={removeTodo}
+                    />
                 </CSSTransition>
             ))}
         </TransitionGroup>

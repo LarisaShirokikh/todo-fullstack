@@ -10,7 +10,7 @@ function* sagaCreateTodo(action: ICreateAction): Generator<Effect, void> {
         }
 
         const todo = yield call(TodoApi.createTodo, todoObject)
-        yield put({ type: ITodoActionTypes.CREATE_TODO_SUCCESS, payload: todoObject })
+        yield put({ type: ITodoActionTypes.CREATE_TODO_SUCCESS, payload: todo })
     } catch (error) {
 
     }
@@ -18,9 +18,9 @@ function* sagaCreateTodo(action: ICreateAction): Generator<Effect, void> {
 
 function* sagaDeleteTodo(action: IDeleteAction): Generator<Effect, void> {
     try {
-        
 
-       yield call(TodoApi.deleteTodo, action.payload)
+
+        yield call(TodoApi.deleteTodo, action.payload)
         yield put({ type: ITodoActionTypes.DELETE_TODO_SUCCESS, payload: action.payload })
     } catch (error) {
 
@@ -29,5 +29,5 @@ function* sagaDeleteTodo(action: IDeleteAction): Generator<Effect, void> {
 
 export function* sagaWatcher(): Generator<Effect, void> {
     yield takeEvery(ITodoActionTypes.CREATE_TODO, sagaCreateTodo)
-    yield takeEvery(ITodoActionTypes.DELETE_TODO, sagaCreateTodo)
+    yield takeEvery(ITodoActionTypes.DELETE_TODO, sagaDeleteTodo)
 }

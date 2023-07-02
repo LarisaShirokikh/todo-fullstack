@@ -5,9 +5,11 @@ import './styles.css';
 
 interface ITodoProps {
     todo: ITodo;
+    deleteTodo: (arg0: string) => void;
 }
 
-export const TodoItem = ({ todo }: ITodoProps) => {
+export const TodoItem = ({ todo, deleteTodo }: ITodoProps) => {
+    const handleDelete = () => deleteTodo(todo.id);
     return (
         <li className="list-group-item d-flex align-items-center">
 
@@ -17,14 +19,16 @@ export const TodoItem = ({ todo }: ITodoProps) => {
             </div>
 
             <div className="d-flex">
-                <button style={{ marginRight: '10px' }} 
-                className='btn btn-primary'>
-                        <FontAwesomeIcon icon={faEdit} />
-                    
+                <button style={{ marginRight: '10px' }}
+                    className='btn btn-primary'>
+                    <FontAwesomeIcon icon={faEdit} />
+
                 </button>
-                <button className='btn btn-danger ml-2'>
-                        <FontAwesomeIcon icon={faTrash} />
-                    
+                <button
+                    onClick={handleDelete}
+                    className='btn btn-danger ml-2'>
+                    <FontAwesomeIcon icon={faTrash} />
+
                 </button>
             </div>
         </li>
