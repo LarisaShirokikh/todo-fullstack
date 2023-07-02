@@ -13,3 +13,9 @@ export const deleteTodo = (payload: string) => {
         payload
     }
 }
+
+export const getTodos = () => {
+    return {
+        type: ITodoActionTypes.GET_TODOS
+    }
+}
