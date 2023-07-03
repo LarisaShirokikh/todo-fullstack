@@ -19,3 +19,23 @@ export const getTodos = () => {
         type: ITodoActionTypes.GET_TODOS
     }
 }
+
+export const completeTodo = (id: string, done: boolean) => {
+    return {
+        type: ITodoActionTypes.COMPLETE_TODO,
+        payload: {
+            id,
+            done
+        }
+    }
+}
+
+export const updateTodoAction = (id: string, done: boolean) => {
+    return {
+        type: ITodoActionTypes.UPDATE_TODO,
+        payload: {
+            id,
+            done
+        }
+    }
+}
